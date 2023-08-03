@@ -39,17 +39,17 @@ services:
   # Ta bổ sung thêm 1 service pgadmin cấu hình như bên dưới      #
   ################################################################
 
-  pgadmin:
-    image: dpage/pgadmin4:7.3    # Jun 24, 2023
-    container_name: pgadmin
-    environment:
-      - PGADMIN_DEFAULT_EMAIL=pgadmin@fsofts.com
-      - PGADMIN_DEFAULT_PASSWORD=pgadmin@fsofts.com
-      - PGADMIN_LISTEN_PORT=80
-    ports:
-      - 15432:80
-    volumes:
-      - ./pgadmin:/var/lib/pgadmin
-    restart: unless-stopped
-    depends_on:
-      - db
+  # pgadmin:
+  #   image: dpage/pgadmin4:7.3    # Jun 24, 2023
+  #   container_name: pgadmin
+  #   environment:
+  #     - PGADMIN_DEFAULT_EMAIL=pgadmin@fsofts.com
+  #     - PGADMIN_DEFAULT_PASSWORD=pgadmin@fsofts.com
+  #     - PGADMIN_LISTEN_PORT=80
+  #   ports:
+  #     - 15432:80
+  #   volumes:
+  #     - ./pgadmin:/var/lib/pgadmin
+  #   restart: unless-stopped
+  #   depends_on:
+  #     - db
