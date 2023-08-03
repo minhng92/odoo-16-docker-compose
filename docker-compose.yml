@@ -19,8 +19,8 @@ services:
     depends_on:
       - db
     ports:
-      - "8069:8069"
-      - "8072:8072" # live chat
+      - "10016:8069"
+      - "20016:8072" # live chat
     tty: true
     command: --
     environment:
@@ -28,9 +28,8 @@ services:
       - USER=odoo
       - PASSWORD=RubTZ/ipDCyPGJOlB+/AEjOyA9KWZmutttFcNCEj
     volumes:
-      # - ./entrypoint.sh:/entrypoint.sh   # if you want to install additional Python packages, uncomment this line!
-      #- /etc/timezone:/etc/timezone:ro
       - /etc/localtime:/etc/localtime:ro
+      - ./entrypoint.sh:/entrypoint.sh   # if you want to install additional Python packages, uncomment this line!
       - ./addons:/mnt/extra-addons
       - ./etc:/etc/odoo
     restart: always             # run as a service

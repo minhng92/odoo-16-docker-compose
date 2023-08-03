@@ -1,4 +1,10 @@
 #!/bin/bash
+
+# curl -s https://raw.githubusercontent.com/minhng92/odoo-16-docker-compose/master/run.sh | sudo bash -s odoo-one 10016 20016
+# odoo-one: target folder on local machine
+# 10016: Odoo port
+# 20016: chat port
+
 DESTINATION=$1
 PORT=$2
 CHAT=$3
