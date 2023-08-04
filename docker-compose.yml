@@ -15,8 +15,8 @@ services:
     depends_on:
       - db
     ports:
-      - "10016:8069"
-      - "20016:8072" # live chat
+      - "127.0.0.1:10016:8069"
+      - "127.0.0.1:20016:8072" # live chat
     tty: true
     command: --
     env_file: .env
