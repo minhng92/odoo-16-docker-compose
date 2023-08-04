@@ -1,17 +1,13 @@
-version: '2'
+version: '3'
 services:
   db:
     container_name: odoo-postgres
     image: postgres:15
     user: root
-    environment:
-      - POSTGRES_USER=odoo
-      - POSTGRES_PASSWORD=RubTZ/ipDCyPGJOlB+/AEjOyA9KWZmutttFcNCEj
-      - POSTGRES_DB=postgres
+    env_file: .env
     restart: always             # run as a service
     volumes:
         - ./postgresql:/var/lib/postgresql/data
-
   odoo:
     container_name: odoo
     image: odoo:16
@@ -23,10 +19,7 @@ services:
       - "20016:8072" # live chat
     tty: true
     command: --
-    environment:
-      - HOST=db
-      - USER=odoo
-      - PASSWORD=RubTZ/ipDCyPGJOlB+/AEjOyA9KWZmutttFcNCEj
+    env_file: .env
     volumes:
       - /etc/localtime:/etc/localtime:ro
       # - ./entrypoint.sh:/entrypoint.sh   # if you want to install additional Python packages, uncomment this line!
