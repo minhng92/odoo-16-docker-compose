@@ -7,7 +7,7 @@ services:
     env_file: .env
     restart: always             # run as a service
     volumes:
-        - ./postgresql:/var/lib/postgresql/data
+        - ./postgresql:/var/lib/postgresql/data/pgdata
   odoo:
     container_name: odoo
     image: odoo:16
