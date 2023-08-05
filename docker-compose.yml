@@ -3,7 +3,7 @@ services:
   db:
     container_name: odoo-postgres
     image: postgres:15
-    user: $USER
+    user: root
     env_file: .env
     restart: always             # run as a service
     volumes:
