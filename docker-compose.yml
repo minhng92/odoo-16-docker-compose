@@ -3,7 +3,7 @@ services:
   db:
     container_name: odoo-postgres
     image: postgres:15
-    user: root
+    user: odoo
     env_file: .env
     restart: always             # run as a service
     volumes:
@@ -11,7 +11,7 @@ services:
   odoo:
     container_name: odoo
     image: odoo:16
-    user: root
+    user: odoo
     depends_on:
       - db
     ports:
