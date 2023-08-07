@@ -1,35 +1,48 @@
-version: '2'
+version: '3'
 services:
   db:
+    container_name: odoo-postgres
     image: postgres:15
     user: root
-    environment:
-      - POSTGRES_USER=odoo
-      - POSTGRES_PASSWORD=odoo16@2022      
-      - POSTGRES_DB=postgres
+    env_file: .env
     restart: always             # run as a service
     volumes:
-        - ./postgresql:/var/lib/postgresql/data
-
-  odoo16:
+        - ./postgresql:/var/lib/postgresql/data/pgdata
+  odoo:
+    container_name: odoo
     image: odoo:16
-    user: root
+    user: $USER
     depends_on:
       - db
     ports:
-      - "10016:8069"
-      - "20016:8072" # live chat
+      - "127.0.0.1:10016:8069"
+      - "127.0.0.1:20016:8072" # live chat
     tty: true
     command: --
-    environment:
-      - HOST=db
-      - USER=odoo
-      - PASSWORD=odoo16@2022
+    env_file: .env
     volumes:
-      #- /etc/timezone:/etc/timezone:ro
-      #- /etc/localtime:/etc/localtime:ro
+      - /etc/localtime:/etc/localtime:ro
       # - ./entrypoint.sh:/entrypoint.sh   # if you want to install additional Python packages, uncomment this line!
       - ./addons:/mnt/extra-addons
       - ./etc:/etc/odoo
     restart: always             # run as a service
-    
+
+  ################################################################
+  # Các service phía trên là của odoo và postgres, ta giữ nguyên #
+  # Ta bổ sung thêm 1 service pgadmin cấu hình như bên dưới      #
+  ################################################################
+
+  # pgadmin:
+  #   image: dpage/pgadmin4:7.3    # Jun 24, 2023
+  #   container_name: pgadmin
+  #   environment:
+  #     - PGADMIN_DEFAULT_EMAIL=pgadmin@fsofts.com
+  #     - PGADMIN_DEFAULT_PASSWORD=pgadmin@fsofts.com
+  #     - PGADMIN_LISTEN_PORT=80
+  #   ports:
+  #     - 15432:80
+  #   volumes:
+  #     - ./pgadmin:/var/lib/pgadmin
+  #   restart: unless-stopped
+  #   depends_on:
+  #     - db
