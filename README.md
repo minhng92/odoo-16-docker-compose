@@ -133,3 +133,9 @@ server {
 <img src="screenshots/odoo-16-sales-screen.png" width="100%">
 
 <img src="screenshots/odoo-16-product-form.png" width="100%">
+
+## ☕ Buy Me a Coffee
+
+If you find this project helpful, consider buying me a coffee to support my work!
+
+<a href="https://buymeacoffee.com/minhng.info" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
